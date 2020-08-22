@@ -1,0 +1,79 @@
+server:
+  #端口配置
+  port: 8086
+##mybatis配置
+mybatis:
+  configuration:
+    #开启MyBatis的二级缓存
+    cache-enabled: true
+  #Mapper.xml所在的位置
+  mapper-locations: classpath*:mybatis/**/*Mapper.xml
+  #entity扫描的包名
+  type-aliases-package: com.example
+pagehelper:
+  helperDialect: mysql
+  params: count=countSql
+  reasonable: true
+  supportMethodsArguments: true
+spring:
+  #数据源配置
+  datasource:
+    #druid
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+      username: root
+      password: root
+      # 初始化大小，最小，最大
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      # 配置获取连接等待超时的时间
+      max-wait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 300000
+      #检测连接是否有效的sql
+      validation-query: SELECT 'x'
+      validation-query-timeout: 60000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      # PSCache Mysql下建议关闭
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: -1
+      # WebStatFilter配置，说明请参考Druid Wiki，配置_配置WebStatFilter
+      web-stat-filter:
+        #启动项目后访问 http://127.0.0.1:8080/druid
+        #是否启用StatFilter默认值true
+        enabled: true
+        url-pattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*'
+        #缺省sessionStatMaxCount是1000个
+        session-stat-max-count: 1000
+        #关闭session统计功能
+        session-stat-enable: false
+        #配置principalSessionName，使得druid能够知道当前的session的用户是谁
+        #如果你session中保存的是非string类型的对象，需要重载toString方法
+        principalSessionName: xxx.user
+        #如果user信息保存在cookie中，你可以配置principalCookieName，使得druid知道当前的user是谁
+        principalCookieName: xxx.user
+        #druid 0.2.7版本开始支持profile，配置profileEnable能够监控单个url调用的sql列表。
+        profile-enable: false
+      # StatViewServlet配置，说明请参考Druid Wiki，配置_StatViewServlet配置
+      stat-view-servlet:
+        #启动项目后访问 http://127.0.0.1:8080/druid
+        #是否启用StatViewServlet默认值true
+        urlPattern: /druid/*
+        enabled: true
+        #禁用HTML页面上的“Reset All”功能
+        resetEnable: false
+        #用户名
+        loginUsername: admin
+        #密码
+        loginPassword: admin
+        #IP白名单(没有配置或者为空，则允许所有访问)
+        allow: 127.0.0.1,192.168.1.11
+        #IP黑名单 (存在共同时，deny优先于allow)
+        deny: 192.168.1.73

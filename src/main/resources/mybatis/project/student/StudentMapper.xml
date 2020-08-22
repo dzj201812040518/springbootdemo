@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootdemo.project.student.mapper.StudentMapper">
+
+    <resultMap type="com.example.springbootdemo.project.student.domain.Student" id="StudentMap">
+        <result property="sId" column="s_id" jdbcType="VARCHAR"/>
+        <result property="sName" column="s_name" jdbcType="VARCHAR"/>
+        <result property="sBirth" column="s_birth" jdbcType="VARCHAR"/>
+        <result property="sSex" column="s_sex" jdbcType="VARCHAR"/>
+    </resultMap>
+    <!--查询字段-->
+    <sql id="Base_Column_List">
+        s_id, s_name, s_birth, s_sex        
+    </sql>
+
+    <!--通过主键查询-->
+    <select id="queryById" resultMap="StudentMap">
+        select
+        <include refid="Base_Column_List"/>
+        from demo.student
+        <where>
+            s_id = #{sId}
+        </where>
+    </select>
+
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="StudentMap">
+        select
+        <include refid="Base_Column_List"/>
+        from demo.student
+        <where>
+            <if test="sId != null and sId != ''">and s_id like concat('%',#{sId},'%')</if>
+            <if test="sName != null and sName != ''">and s_name like concat('%',#{sName},'%')</if>
+            <if test="sBirth != null and sBirth != ''">and s_birth like concat('%',#{sBirth},'%')</if>
+            <if test="sSex != null and sSex != ''">and s_sex like concat('%',#{sSex},'%')</if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="sId" useGeneratedKeys="true">
+        insert into demo.student
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sName != null and sName != ''">s_name,</if>
+            <if test="sBirth != null and sBirth != ''">s_birth,</if>
+            <if test="sSex != null and sSex != ''">s_sex,</if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="sName != null and sName != ''">#{sName},</if>
+            <if test="sBirth != null and sBirth != ''">#{sBirth},</if>
+            <if test="sSex != null and sSex != ''">#{sSex},</if>
+        </trim>
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update demo.student
+        <set>
+            <if test="sName != null and sName != ''">s_name = #{sName},</if>
+            <if test="sBirth != null and sBirth != ''">s_birth = #{sBirth},</if>
+            <if test="sSex != null and sSex != ''">s_sex = #{sSex},</if>
+        </set>
+        where s_id = #{sId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from demo.student where s_id = #{sId}
+    </delete>
+
+</mapper>
