@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * 启动类
- * @author xiaojie
+ * @author xiaojie xiaojie
  * 此处必须加入MapperScan注解，前面根据自己项目来更改即可
  */
 @SpringBootApplication
