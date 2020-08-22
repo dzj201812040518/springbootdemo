@@ -78,4 +78,9 @@ spring:
         #IP黑名单 (存在共同时，deny优先于allow)
         deny: 192.168.1.73
 
+#集成logback日志
+logging:
+  config: classpath:logback-spring.xml
+  file:
+    path: log
 

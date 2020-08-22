@@ -17,7 +17,7 @@ public class CommonQueryController {
     ICommonQueryService commonQueryService;
     @ResponseBody
     @PostMapping("{url}")
-    public List<Map<String, Object>> test(@PathVariable("url")String url, Map<String,String> conditions){
+    public List<Map<String, Object>> test(@PathVariable("url")String url, @RequestParam Map<String,String> conditions){
         List<Map<String, Object>> result = commonQueryService.execute(url,conditions);
         return result;
     }
