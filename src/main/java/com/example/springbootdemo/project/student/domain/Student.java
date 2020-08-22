@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * 学生表(Student)实体类
  *
- * @author xiaojie
+ * @author xiaojie xiaojie
  * @since 2020-08-22 13:33:19
  */
 public class Student implements Serializable {

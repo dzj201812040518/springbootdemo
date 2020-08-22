@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * 学生表(Student)表服务接口
  *
- * @author xiaojie
+ * @author xiaojie xiaojie
  * @since 2020-08-22 13:33:21
  */
 public interface IStudentService {
