@@ -1,6 +1,6 @@
-package com.example.springbootdemo.project.commonquery.mapper;
+package com.example.springbootdemo.project.common.commonquery.mapper;
 
-import com.example.springbootdemo.project.commonquery.pojo.CommonQuery;
+import com.example.springbootdemo.project.common.commonquery.pojo.CommonQuery;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

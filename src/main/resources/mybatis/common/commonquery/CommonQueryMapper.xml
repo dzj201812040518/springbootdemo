@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.springbootdemo.project.commonquery.mapper.CommonQueryMapper">
-  <resultMap id="BaseResultMap" type="com.example.springbootdemo.project.commonquery.pojo.CommonQuery">
+<mapper namespace="com.example.springbootdemo.project.common.commonquery.mapper.CommonQueryMapper">
+  <resultMap id="BaseResultMap" type="com.example.springbootdemo.project.common.commonquery.pojo.CommonQuery">
     <id column="common_query_id" jdbcType="BIGINT" property="commonQueryId" />
     <result column="common_query_url" jdbcType="VARCHAR" property="commonQueryUrl" />
     <result column="common_query_sql" jdbcType="VARCHAR" property="commonQuerySql" />
@@ -28,7 +28,7 @@
     delete from common_query
     where common_query_id = #{commonQueryId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" keyColumn="common_query_id" keyProperty="commonQueryId" parameterType="com.example.springbootdemo.project.commonquery.pojo.CommonQuery" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="common_query_id" keyProperty="commonQueryId" parameterType="com.example.springbootdemo.project.common.commonquery.pojo.CommonQuery" useGeneratedKeys="true">
     insert into common_query (common_query_url, common_query_sql, common_query_conditions, 
       common_query_additional, del_flag, createby, 
       createtime, updateby, updatetime, 
@@ -38,7 +38,7 @@
       #{createtime,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, 
       #{description,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" keyColumn="common_query_id" keyProperty="commonQueryId" parameterType="com.example.springbootdemo.project.commonquery.pojo.CommonQuery" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="common_query_id" keyProperty="commonQueryId" parameterType="com.example.springbootdemo.project.common.commonquery.pojo.CommonQuery" useGeneratedKeys="true">
     insert into common_query
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="commonQueryUrl != null">
@@ -105,7 +105,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.springbootdemo.project.commonquery.pojo.CommonQuery">
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.springbootdemo.project.common.commonquery.pojo.CommonQuery">
     update common_query
     <set>
       <if test="commonQueryUrl != null">
@@ -141,7 +141,7 @@
     </set>
     where common_query_id = #{commonQueryId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.springbootdemo.project.commonquery.pojo.CommonQuery">
+  <update id="updateByPrimaryKey" parameterType="com.example.springbootdemo.project.common.commonquery.pojo.CommonQuery">
     update common_query
     set common_query_url = #{commonQueryUrl,jdbcType=VARCHAR},
       common_query_sql = #{commonQuerySql,jdbcType=VARCHAR},

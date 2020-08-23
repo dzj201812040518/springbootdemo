@@ -1,4 +1,4 @@
-package com.example.springbootdemo.project.commonquery.pojo;
+package com.example.springbootdemo.project.common.commonquery.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
