@@ -75,6 +75,8 @@ public class CommonQueryServiceImpl implements ICommonQueryService{
                     sqlcondition = dynamicConditions(sqlcondition);
                     if (!StringUtils.isEmpty(sqlcondition)){
                         sql.WHERE(sqlcondition);
+                    }else {
+                        throw new RuntimeException(String.format("%s:未找到参数，请检查参数名是否正确",commonQuery.getCommonQueryUrl()));
                     }
                 }
             }
