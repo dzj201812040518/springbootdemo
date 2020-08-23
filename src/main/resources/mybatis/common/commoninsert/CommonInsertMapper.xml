@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootdemo.project.common.commoninsert.mapper.CommonInsertMapper">
+  <resultMap id="BaseResultMap" type="com.example.springbootdemo.project.common.commoninsert.domain.CommonInsert">
+    <id column="common_insert_id" jdbcType="BIGINT" property="commonInsertId" />
+    <result column="common_insert_url" jdbcType="VARCHAR" property="commonInsertUrl" />
+    <result column="common_insert_field" jdbcType="VARCHAR" property="commonInsertField" />
+    <result column="common_insert_table" jdbcType="VARCHAR" property="commonInsertTable" />
+    <result column="del_flag" jdbcType="CHAR" property="delFlag" />
+    <result column="createby" jdbcType="VARCHAR" property="createby" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updateby" jdbcType="VARCHAR" property="updateby" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    common_insert_id, common_insert_url, common_insert_field, common_insert_table, del_flag, 
+    createby, createtime, updateby, updatetime, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from common_insert
+    where common_insert_id = #{commonInsertId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from common_insert
+    where common_insert_id = #{commonInsertId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="common_insert_id" keyProperty="commonInsertId" parameterType="com.example.springbootdemo.project.common.commoninsert.domain.CommonInsert" useGeneratedKeys="true">
+    insert into common_insert (common_insert_url, common_insert_field, 
+      common_insert_table, del_flag, createby, 
+      createtime, updateby, updatetime, 
+      description)
+    values (#{commonInsertUrl,jdbcType=VARCHAR}, #{commonInsertField,jdbcType=VARCHAR}, 
+      #{commonInsertTable,jdbcType=VARCHAR}, #{delFlag,jdbcType=CHAR}, #{createby,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="common_insert_id" keyProperty="commonInsertId" parameterType="com.example.springbootdemo.project.common.commoninsert.domain.CommonInsert" useGeneratedKeys="true">
+    insert into common_insert
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commonInsertUrl != null">
+        common_insert_url,
+      </if>
+      <if test="commonInsertField != null">
+        common_insert_field,
+      </if>
+      <if test="commonInsertTable != null">
+        common_insert_table,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="createby != null">
+        createby,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="updateby != null">
+        updateby,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commonInsertUrl != null">
+        #{commonInsertUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="commonInsertField != null">
+        #{commonInsertField,jdbcType=VARCHAR},
+      </if>
+      <if test="commonInsertTable != null">
+        #{commonInsertTable,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=CHAR},
+      </if>
+      <if test="createby != null">
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.springbootdemo.project.common.commoninsert.domain.CommonInsert">
+    update common_insert
+    <set>
+      <if test="commonInsertUrl != null">
+        common_insert_url = #{commonInsertUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="commonInsertField != null">
+        common_insert_field = #{commonInsertField,jdbcType=VARCHAR},
+      </if>
+      <if test="commonInsertTable != null">
+        common_insert_table = #{commonInsertTable,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=CHAR},
+      </if>
+      <if test="createby != null">
+        createby = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        updateby = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where common_insert_id = #{commonInsertId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.springbootdemo.project.common.commoninsert.domain.CommonInsert">
+    update common_insert
+    set common_insert_url = #{commonInsertUrl,jdbcType=VARCHAR},
+      common_insert_field = #{commonInsertField,jdbcType=VARCHAR},
+      common_insert_table = #{commonInsertTable,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=CHAR},
+      createby = #{createby,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updateby = #{updateby,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=VARCHAR}
+    where common_insert_id = #{commonInsertId,jdbcType=BIGINT}
+  </update>
+
+
+
+  <insert id="executeInsert" >
+    ${sql}
+  </insert>
+
+  <select id="selectCommonInsertByUrl" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM common_insert WHERE
+    common_insert_url = #{url}
+  </select>
+</mapper>

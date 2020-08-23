@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    $(function () {
+        $.post("/commonInsert/insertTime",{
+            time:"2020-08-16 23:59:59"
+        },function(result){
+            console.log(result);
+        });
+        // $.post("/commonQuery/map",{
+        //     requests:encodeURIComponent(JSON.stringify([
+        //         {
+        //             url:"selectStudentAll",
+        //             condition:{
+        //                 id:"2",
+        //                 // name:"5"
+        //             }
+        //         },
+        //         {
+        //             url:"selectTime",
+        //             condition:{
+        //                 id:"6"
+        //             }
+        //         },
+        //     ]))
+        // },function(result){
+        //         console.log(result);
+        // });
+    })
+</script>
+</html>
