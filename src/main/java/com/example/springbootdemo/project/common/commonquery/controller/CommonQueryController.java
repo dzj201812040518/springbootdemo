@@ -1,19 +1,21 @@
 package com.example.springbootdemo.project.common.commonquery.controller;
-
 import com.example.springbootdemo.framework.web.domain.AjaxResult;
 import com.example.springbootdemo.project.common.commonquery.service.ICommonQueryService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 import java.util.Map;
 
+/**
+ * 万能查询接口控制层
+ * @author xiaojie
+ */
 @Controller
 @RequestMapping("/commonQuery")
 public class CommonQueryController {
-    @Autowired
+    @Resource
     ICommonQueryService commonQueryService;
     @ResponseBody
     @PostMapping("{url}")
@@ -28,13 +30,12 @@ public class CommonQueryController {
     @ResponseBody
     @PostMapping("map")
     public AjaxResult queryAll(@RequestParam String requests){
-        String errormsg = "";
         try {
             return AjaxResult.success(commonQueryService.executeAll(requests));
         } catch (UnsupportedEncodingException | RuntimeException e) {
-            errormsg = e.getMessage();
+            return AjaxResult.error(e.getMessage());
         }
-        return AjaxResult.error(errormsg);
+
 
     }
 

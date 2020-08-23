@@ -6,6 +6,10 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 万能查询接口数据层
+ * @author xiaojie
+ */
 public interface CommonQueryMapper {
     int deleteByPrimaryKey(Long commonQueryId);
 
@@ -28,8 +32,8 @@ public interface CommonQueryMapper {
 
     /**
      * 根据URL获取查询接口
-     * @param url
-     * @return
+     * @param url 请求url
+     * @return 返回接口实例
      */
     CommonQuery selectCommonQueryByUrl(@Param("url")String url);
 }

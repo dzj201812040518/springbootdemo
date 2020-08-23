@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * common_query
- * @author 
+ * common_query 万能查询接口实体层
+ * @author xiaojie
  */
 public class CommonQuery implements Serializable {
     /**

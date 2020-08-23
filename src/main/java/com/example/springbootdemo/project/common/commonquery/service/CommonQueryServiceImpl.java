@@ -11,6 +11,10 @@ import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * 万能查询接口业务实现层
+ * @author xiaojie
+ */
 @Service
 public class CommonQueryServiceImpl implements ICommonQueryService{
     @Resource
@@ -31,7 +35,7 @@ public class CommonQueryServiceImpl implements ICommonQueryService{
     }
 
     @Override
-    public Map<String, List<Map<String, Object>>> executeAll(String requests) throws UnsupportedEncodingException {
+    public Map<String, List<Map<String, Object>>> executeAll(String requests) throws UnsupportedEncodingException,RuntimeException {
         Map<String, List<Map<String, Object>>> results = new HashMap<String, List<Map<String, Object>>>();
         //解码
         String data = URLDecoder.decode(requests,"UTF-8");
